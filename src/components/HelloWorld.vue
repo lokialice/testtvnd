@@ -56,7 +56,7 @@ export default {
         try {
             // Request account access if needed
             ethereum.enable();
-             const accounts = web3.eth.getAccounts()
+            web3.eth.getAccounts()
 .then(result => {
   this.ethAddress = result;
 });
@@ -70,7 +70,7 @@ export default {
     // Legacy dapp browsers...
     else if (web3) {
         web3 = new Web3(web3.currentProvider);
-        const accounts = web3.eth.getAccounts()
+        web3.eth.getAccounts()
 .then(result => {
   this.ethAddress = result;
 });
