@@ -80,6 +80,7 @@
         </a>
       </li>
     </ul>
+    <h1>{{ethAddress}}</h1>
   </div>
 </template>
 
@@ -89,7 +90,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      ethAddress:""
     }
   },
   mounted:function(){
@@ -100,7 +102,9 @@ export default {
         try {
             // Request account access if needed
             await ethereum.enable();
-            const accounts = window.web3.eth.getAccounts().then(alert);
+            const accounts = window.web3.eth.getAccounts().then(restult => {
+              this.ethAddress = restult;
+            });
         } catch (error) {
             // User denied account access...
         }
@@ -108,7 +112,9 @@ export default {
     // Legacy dapp browsers...
     else if (window.web3) {
         window.web3 = new Web3(web3.currentProvider);
-         const accounts = window.web3.eth.getAccounts().then(alert);
+        const accounts = window.web3.eth.getAccounts().then(restult => {
+              this.ethAddress = restult;
+            });
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
     }
