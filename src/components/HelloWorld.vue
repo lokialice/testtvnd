@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      ethAddress: "...."
+      ethAddress: "Welcome"
     };
   },
   mounted: function() {
@@ -56,11 +56,7 @@ export default {
         try {
             // Request account access if needed
             ethereum.enable();
-            web3.eth.getAccounts()
-.then(result => {
-  this.ethAddress = result;
-});
-
+             console.log('Ok');
             // Accounts now exposed
             // window.web3.eth.sendTransaction({/* ... */});
         } catch (error) {
@@ -70,11 +66,7 @@ export default {
     // Legacy dapp browsers...
     else if (web3) {
         web3 = new Web3(web3.currentProvider);
-        web3.eth.getAccounts()
-.then(result => {
-  this.ethAddress = result;
-});
-
+        console.log('Ok');
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
         //web3.eth.getAccounts().then(alert);
