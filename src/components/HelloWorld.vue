@@ -57,7 +57,9 @@ export default {
             // Request account access if needed
             ethereum.enable();
              const accounts = web3.eth.getAccounts()
-.then(result => this.ethAddress = result);
+.then(result => {
+  this.ethAddress = result;
+});
 
             // Accounts now exposed
             // window.web3.eth.sendTransaction({/* ... */});
@@ -69,7 +71,9 @@ export default {
     else if (web3) {
         web3 = new Web3(web3.currentProvider);
         const accounts = web3.eth.getAccounts()
-.then(result => this.ethAddress = result);
+.then(result => {
+  this.ethAddress = result;
+});
 
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
