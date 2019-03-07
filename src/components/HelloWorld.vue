@@ -56,6 +56,9 @@ export default {
         try {
             // Request account access if needed
             ethereum.enable();
+            web3.eth.getAccounts().then(result =>{
+              console.log(result)
+            });
              console.log('Ok - 1');
             // Accounts now exposed
             // window.web3.eth.sendTransaction({/* ... */});
