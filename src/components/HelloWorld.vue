@@ -56,7 +56,7 @@ export default {
         try {
             // Request account access if needed
             ethereum.enable();
-            web3.eth.getAccounts().then(alert);
+            console.log(web3)
             // Accounts now exposed
             // window.web3.eth.sendTransaction({/* ... */});
         } catch (error) {
@@ -68,7 +68,7 @@ export default {
         web3 = new Web3(web3.currentProvider);
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
-        web3.eth.getAccounts().then(alert);
+        //web3.eth.getAccounts().then(alert);
     }
     // Non-dapp browsers...
     else {
