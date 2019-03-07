@@ -100,7 +100,7 @@ export default {
         try {
             // Request account access if needed
             await ethereum.enable();
-            const accounts = window.web3.eth.getAccounts().then(console.log);
+            const accounts = window.web3.eth.getAccounts().then(alert);
         } catch (error) {
             // User denied account access...
         }
@@ -108,7 +108,7 @@ export default {
     // Legacy dapp browsers...
     else if (window.web3) {
         window.web3 = new Web3(web3.currentProvider);
-         const accounts = window.web3.eth.getAccounts().then(console.log);
+         const accounts = window.web3.eth.getAccounts().then(alert);
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
     }
