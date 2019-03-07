@@ -98,11 +98,11 @@ export default {
     window.addEventListener('load', async () => {
     // Modern dapp browsers...
     if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
+        web3 = new Web3(ethereum);
         try {
             // Request account access if needed
             await ethereum.enable();
-            const accounts = window.web3.eth.getAccounts().then(restult => {
+            const accounts = web3.eth.getAccounts().then(restult => {
               this.ethAddress = restult;
             });
         } catch (error) {
@@ -111,8 +111,8 @@ export default {
     }
     // Legacy dapp browsers...
     else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
-        const accounts = window.web3.eth.getAccounts().then(restult => {
+        web3 = new Web3(web3.currentProvider);
+        const accounts = web3.eth.getAccounts().then(restult => {
               this.ethAddress = restult;
             });
         // Accounts always exposed
