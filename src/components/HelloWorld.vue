@@ -46,11 +46,34 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      ethAddress: "Welcome to AA"
+      ethAddress: "...."
     };
   },
   mounted: function() {
-    alert(this.ethAddress)
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            ethereum.enable();
+            web3.eth.getAccounts().then(alert);
+            // Accounts now exposed
+            // window.web3.eth.sendTransaction({/* ... */});
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (web3) {
+        web3 = new Web3(web3.currentProvider);
+        // Accounts always exposed
+        // window.web3.eth.sendTransaction({/* ... */});
+        web3.eth.getAccounts().then(alert);
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
   }
 };
 </script>
