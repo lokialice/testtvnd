@@ -50,14 +50,13 @@ export default {
     };
   },
   mounted: function() {
-   window.addEventListener('load', async () => {
     // Modern dapp browsers...
     if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
+        web3 = new Web3(ethereum);
         try {
             // Request account access if needed
-            await ethereum.enable();
-            window.web3.eth.getAccounts().then(result =>  this.ethAddress = result);
+            ethereum.enable();
+            web3.eth.getAccounts().then(result =>  this.ethAddress = result);
             // Accounts now exposed
             // window.web3.eth.sendTransaction({/* ... */});
         } catch (error) {
@@ -65,17 +64,16 @@ export default {
         }
     }
     // Legacy dapp browsers...
-    else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
+    else if (web3) {
+        web3 = new Web3(web3.currentProvider);
         // Accounts always exposed
         // window.web3.eth.sendTransaction({/* ... */});
-        window.web3.eth.getAccounts().then(result =>  this.ethAddress = result);
+        web3.eth.getAccounts().then(result =>  this.ethAddress = result);
     }
     // Non-dapp browsers...
     else {
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
-});
   }
 };
 </script>
